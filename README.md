@@ -22,3 +22,16 @@ When done, inform Gordon Friebe, g.friebe@iversity.org, and list:
 - improvement suggestions to your solution (if you had more time)
 
 We look forward to receiving your results!
+
+
+## How to use
+
+clone the repository
+
+`cd` into the directory
+
+`elm-package install`
+
+`sh build.sh`
+
+open index.html in a browser
