@@ -1,0 +1,6 @@
+# OS X
+.DS_Store
+
+# Elm dependencies and build target
+target
+elm-stuff
