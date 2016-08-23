@@ -2,9 +2,12 @@ module Model exposing (..)
 
 
 type alias Model =
-  { text : String }
+  { courses : List Course }
+
+type alias Course =
+  { title : String }
 
 
 initialModel : Model
 initialModel =
-  { text = "Hello World! So far so good." }
+  { courses = [] }

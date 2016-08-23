@@ -1,4 +1,4 @@
-module Main exposing (..)
+module CourseExplorer exposing (..)
 
 import Html exposing (Html)
 import Html.App as Html

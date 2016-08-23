@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html,h1)
+import Html exposing (Html,div,h2)
 import Html.Attributes
 import Html.Events
 
@@ -10,5 +10,12 @@ import Msg exposing (..)
 
 
 view : Model -> Html Msg
-view {text} =
-  h1 [] [ Html.text text ]
+view {courses} =
+  courses
+  |> List.map renderItem
+  |> div []
+
+
+renderItem : Course -> Html Msg
+renderItem course =
+  h2 [] [ Html.text course.title ]
