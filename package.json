@@ -1,0 +1,7 @@
+{
+  "repository": {},
+  "dependencies": {},
+  "devDependencies": {
+    "elm-test": "^0.17.3"
+  }
+}
