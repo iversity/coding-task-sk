@@ -32,6 +32,14 @@ clone the repository
 
 `elm-package install`
 
+### Run the tests
+
+`sh run-tests.sh`
+
+### Build target/elm.js
+
 `sh build.sh`
+
+### See the result
 
 open index.html in a browser
