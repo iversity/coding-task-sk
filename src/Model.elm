@@ -5,18 +5,25 @@ import Date exposing (Date)
 
 type alias Model =
   { courses : List Course
-  , selectedCourseId : Maybe Int }
+  , selectedCourseId : Maybe Int
+  , filterSetting : FilterSetting }
 
 type alias Course =
   { title : String
   , startDate : Date
   , endDate : Date }
 
+type FilterSetting
+  = Current
+  | Finished
+  | Upcoming
+
 
 initialModel : Model
 initialModel =
   { courses = []
-  , selectedCourseId = Nothing }
+  , selectedCourseId = Nothing
+  , filterSetting = Current }
 
 
 orderByDate : List Course -> List Course
