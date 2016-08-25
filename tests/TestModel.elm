@@ -21,6 +21,7 @@ testModel =
         initialModel.courses |> Expect.equal []
     , describe "orderByDate" testOrderByDate
     , describe "upcomingCourses" testUpcomingCourses
+    , describe "finishedCourses" testFinishedCourses
     ]
 
 
@@ -55,6 +56,41 @@ testUpcomingCourses =
     \() ->
       [ stub1, stub2 ]
       |> upcomingCourses (Date.fromTime 0)
+      |> Expect.equal [ stub1, stub2 ]
+  ]
+
+
+testFinishedCourses : List Test
+testFinishedCourses =
+  [ test "empty list" <|
+    \() ->
+      []
+      |> finishedCourses (Date.fromTime 0)
+      |> Expect.equal []
+  , test "0 of 1" <|
+    \() ->
+      [ stub1 ]
+      |> finishedCourses (Date.fromTime 0)
+      |> Expect.equal []
+  , test "1 of 1" <|
+    \() ->
+      [ stub1 ]
+      |> finishedCourses (Date.fromTime 3)
+      |> Expect.equal [ stub1 ]
+  , test "0 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> finishedCourses (Date.fromTime 2)
+      |> Expect.equal []
+  , test "1 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> finishedCourses (Date.fromTime 3)
+      |> Expect.equal [ stub1 ]
+  , test "2 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> finishedCourses (Date.fromTime 4)
       |> Expect.equal [ stub1, stub2 ]
   ]
 

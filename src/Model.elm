@@ -8,7 +8,8 @@ type alias Model =
 
 type alias Course =
   { title : String
-  , startDate : Date }
+  , startDate : Date
+  , endDate : Date }
 
 
 initialModel : Model
@@ -28,3 +29,11 @@ upcomingCourses currentDate courses =
   |> List.filter
        (\course ->
          Date.toTime course.startDate > Date.toTime currentDate)
+
+
+finishedCourses : Date -> List Course -> List Course
+finishedCourses currentDate courses =
+  courses
+  |> List.filter
+       (\course ->
+         Date.toTime course.endDate < Date.toTime currentDate)
