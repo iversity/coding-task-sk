@@ -7,7 +7,7 @@ import Date exposing (Date)
 
 import Helpers.Stubs exposing (..)
 
-import Model exposing (Course,initialModel,orderByDate)
+import Model exposing (..)
 
 
 (stub1, stub2, stub3)  = (stubCourse 1, stubCourse 2, stubCourse 3)
@@ -20,7 +20,43 @@ testModel =
       \() ->
         initialModel.courses |> Expect.equal []
     , describe "orderByDate" testOrderByDate
+    , describe "upcomingCourses" testUpcomingCourses
     ]
+
+
+testUpcomingCourses : List Test
+testUpcomingCourses =
+  [ test "empty list" <|
+    \() ->
+      []
+      |> upcomingCourses (Date.fromTime 0)
+      |> Expect.equal []
+  , test "0 of 1" <|
+    \() ->
+      [ stub1 ]
+      |> upcomingCourses (Date.fromTime 1)
+      |> Expect.equal []
+  , test "1 of 1" <|
+    \() ->
+      [ stub1 ]
+      |> upcomingCourses (Date.fromTime 0)
+      |> Expect.equal [ stub1 ]
+  , test "0 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> upcomingCourses (Date.fromTime 2)
+      |> Expect.equal []
+  , test "1 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> upcomingCourses (Date.fromTime 1)
+      |> Expect.equal [ stub2 ]
+  , test "2 of 2" <|
+    \() ->
+      [ stub1, stub2 ]
+      |> upcomingCourses (Date.fromTime 0)
+      |> Expect.equal [ stub1, stub2 ]
+  ]
 
 
 testOrderByDate : List Test

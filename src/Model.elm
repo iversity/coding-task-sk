@@ -18,4 +18,13 @@ initialModel =
 
 orderByDate : List Course -> List Course
 orderByDate courses =
-  List.sortBy (\course -> course.startDate |> Date.toTime) courses
+  courses
+  |> List.sortBy (\course -> course.startDate |> Date.toTime)
+
+
+upcomingCourses : Date -> List Course -> List Course
+upcomingCourses currentDate courses =
+  courses
+  |> List.filter
+       (\course ->
+         Date.toTime course.startDate > Date.toTime currentDate)
