@@ -4,7 +4,7 @@ import Model exposing (..)
 
 
 type Msg
-  = NoOp
+  = SetCourses (List Course)
 
 
 subscriptions : Model -> Sub Msg

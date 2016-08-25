@@ -8,5 +8,5 @@ import Msg exposing (..)
 update : Msg -> Model -> (Model, Cmd Msg)
 update action model =
   case action of
-    NoOp ->
-      (model, Cmd.none)
+    SetCourses courses ->
+      ({ model | courses = courses }, Cmd.none)
