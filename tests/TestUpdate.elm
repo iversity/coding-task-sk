@@ -15,10 +15,10 @@ import Update exposing (update)
 testUpdate : Test
 testUpdate =
   describe "update"
-    [ test "setCourses" testSetCourses
-    , test "selectCourse" testSelectCourse
-    , test "filterSetting defaults to current" testFilterSetting
-    , test "setFilter" testSetFilter
+    [ test "setCourses" <| \() -> testSetCourses
+    , test "selectCourse" <| \() -> testSelectCourse
+    , test "filterSetting defaults to current" <| \() -> testFilterSetting
+    , test "setFilter" <| \() -> testSetFilter
     ]
 
 
@@ -28,44 +28,40 @@ stubCourses =
   , stubCourse 2 ]
 
 
-testFilterSetting : () -> Expectation
+testFilterSetting : Expectation
 testFilterSetting =
-  \() ->
-    initialModel.filterSetting
-    |> Expect.equal Current
+  initialModel.filterSetting
+  |> Expect.equal Current
 
 
-testSetFilter : () -> Expectation
+testSetFilter : Expectation
 testSetFilter =
-  \() ->
-    let
-        courses = stubCourses
-        output = initialModel |> update (SetCourses stubCourses)
-        (model', _) = output
-    in
-        model'.courses
-          |> Expect.equal stubCourses
+  let
+      courses = stubCourses
+      output = initialModel |> update (SetCourses stubCourses)
+      (model', _) = output
+  in
+      model'.courses
+        |> Expect.equal stubCourses
 
 
-testSetCourses : () -> Expectation
+testSetCourses : Expectation
 testSetCourses =
-  \() ->
-    let
-        courses = stubCourses
-        output = initialModel |> update (SetCourses stubCourses)
-        (model', _) = output
-    in
-        model'.courses
-          |> Expect.equal stubCourses
+  let
+      courses = stubCourses
+      output = initialModel |> update (SetCourses stubCourses)
+      (model', _) = output
+  in
+      model'.courses
+        |> Expect.equal stubCourses
 
 
-testSelectCourse : () -> Expectation
+testSelectCourse : Expectation
 testSelectCourse =
-  \() ->
-    let
-        id = 12345
-        output = { initialModel | courses = stubCourses } |> update (SelectCourse id)
-        (model', _) = output
-    in
-        model'.selectedCourseId
-          |> Expect.equal (Just id)
+  let
+      id = 12345
+      output = { initialModel | courses = stubCourses } |> update (SelectCourse id)
+      (model', _) = output
+  in
+      model'.selectedCourseId
+        |> Expect.equal (Just id)
