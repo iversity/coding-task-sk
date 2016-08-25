@@ -10,3 +10,5 @@ update action model =
   case action of
     SetCourses courses ->
       ({ model | courses = courses }, Cmd.none)
+    SelectCourse id ->
+      ({ model | selectedCourseId = Just id }, Cmd.none)

@@ -4,7 +4,8 @@ import Date exposing (Date)
 
 
 type alias Model =
-  { courses : List Course }
+  { courses : List Course
+  , selectedCourseId : Maybe Int }
 
 type alias Course =
   { title : String
@@ -14,7 +15,8 @@ type alias Course =
 
 initialModel : Model
 initialModel =
-  { courses = [] }
+  { courses = []
+  , selectedCourseId = Nothing }
 
 
 orderByDate : List Course -> List Course
