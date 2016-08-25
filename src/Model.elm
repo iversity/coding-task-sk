@@ -37,3 +37,12 @@ finishedCourses currentDate courses =
   |> List.filter
        (\course ->
          Date.toTime course.endDate < Date.toTime currentDate)
+
+
+currentCourses : Date -> List Course -> List Course
+currentCourses currentDate courses =
+  courses
+  |> List.filter
+       (\course ->
+         (Date.toTime course.startDate <= Date.toTime currentDate) &&
+         (Date.toTime course.endDate >= Date.toTime currentDate))
