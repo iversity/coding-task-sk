@@ -10,8 +10,9 @@ import Msg exposing (..)
 
 
 view : Model -> Html Msg
-view {courses} =
+view {courses,currentDate} =
   courses
+  |> currentCourses currentDate
   |> List.map renderItem
   |> div []
 

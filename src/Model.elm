@@ -5,6 +5,7 @@ import Date exposing (Date)
 
 type alias Model =
   { courses : List Course
+  , currentDate : Date
   , selectedCourseId : Maybe Int
   , filterSetting : FilterSetting }
 
@@ -22,6 +23,7 @@ type FilterSetting
 initialModel : Model
 initialModel =
   { courses = []
+  , currentDate = Date.fromTime 0
   , selectedCourseId = Nothing
   , filterSetting = Current }
 
