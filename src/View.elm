@@ -16,6 +16,7 @@ view model =
   div
     [ class "container" ]
     [ renderPageHeading
+    , renderPageSubheading
     , renderFilter model
     , renderCourses model ]
 
@@ -25,6 +26,13 @@ renderPageHeading =
   h1
     []
     [ Html.text "Enrol now!" ]
+
+
+renderPageSubheading : Html Msg
+renderPageSubheading =
+  h2
+    []
+    [ Html.text "All our courses are free to try" ]
 
 
 renderCourses : Model -> Html Msg
