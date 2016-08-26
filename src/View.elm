@@ -72,7 +72,8 @@ renderCourseBody course =
         [ classList classes ]
         [ renderCourseTitle course
         , renderCourseInstructors course
-        , renderCourseSubtitle course ]
+        , renderCourseSubtitle course
+        , renderPlayButton ]
 
 
 renderCourseTitle : Course -> Html Msg
@@ -87,6 +88,13 @@ renderCourseSubtitle {subtitle} =
   h3
     []
     [ Html.text subtitle ]
+
+
+renderPlayButton : Html Msg
+renderPlayButton =
+  div
+    [ Html.Attributes.class "play-button" ]
+    []
 
 
 renderCourseInstructors : Course -> Html Msg
