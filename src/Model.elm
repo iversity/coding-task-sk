@@ -12,8 +12,12 @@ type alias Model =
 type alias Course =
   { title : String
   , subtitle : String
+  , instructors : List Instructor
   , startDate : Date
   , endDate : Date }
+
+type alias Instructor =
+  { name : String }
 
 type FilterSetting
   = Current

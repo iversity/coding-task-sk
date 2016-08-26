@@ -1,8 +1,10 @@
 module View exposing (view)
 
-import Html exposing (Html,div,h2,h3)
+import Html exposing (Html,div,p,h1,h2,h3)
 import Html.Attributes exposing (class,classList)
 import Html.Events
+
+import String
 
 import Model exposing (..)
 
@@ -34,6 +36,7 @@ renderCourse course =
       div
         [ classList classes ]
         [ renderCourseTitle course
+        , renderCourseInstructors course
         , renderCourseSubtitle course ]
 
 
@@ -49,6 +52,17 @@ renderCourseSubtitle {subtitle} =
   h3
     []
     [ Html.text subtitle ]
+
+
+renderCourseInstructors : Course -> Html Msg
+renderCourseInstructors {instructors} =
+  let
+      names = List.map .name instructors
+      text = joinNames names
+  in
+      p
+        [ class "instructor" ]
+        [ Html.text text ]
 
 
 renderFilter : Model -> Html Msg
@@ -79,3 +93,19 @@ renderButton name targetSetting chosenSetting =
         , classList classes
         , Html.Events.onClick (SetFilter targetSetting) ]
         [ Html.text name ]
+
+
+joinNames : List String -> String
+joinNames names =
+  case names of
+    [] ->
+      ""
+
+    [ name ] ->
+      name
+
+    [ first, second ] ->
+      first ++ " & " ++ second
+
+    hd::tl ->
+      hd ++ ", " ++ (joinNames tl)
