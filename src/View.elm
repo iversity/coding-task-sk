@@ -15,8 +15,16 @@ view : Model -> Html Msg
 view model =
   div
     [ class "container" ]
-    [ renderFilter model
+    [ renderPageHeading
+    , renderFilter model
     , renderCourses model ]
+
+
+renderPageHeading : Html Msg
+renderPageHeading =
+  h1
+    []
+    [ Html.text "Enrol now!" ]
 
 
 renderCourses : Model -> Html Msg

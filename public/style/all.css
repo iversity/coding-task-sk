@@ -18,6 +18,10 @@ h1, h2, h3, h4, h5{
   font-weight: normal;
 }
 
+h1{
+  font-size: 60px;
+}
+
 .container{
   max-width: 920px;
   margin: 0 auto;
@@ -71,6 +75,10 @@ h1, h2, h3, h4, h5{
 .course-item{
   padding: 15px;
   margin-bottom: 30px;
+}
+
+.course-item h2{
+  margin-top: 8px;
 }
 
 .instructor{
