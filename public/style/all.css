@@ -24,6 +24,11 @@ h1{
   font-size: 60px;
 }
 
+.header{
+  margin-top: 100px;
+  text-align: center;
+}
+
 .container{
   max-width: 920px;
   margin: 0 auto;
@@ -88,6 +93,31 @@ h1{
   width: 100%;
 }
 
+.play-button{
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+  background: url('../images/play_button.svg') no-repeat;
+}
+
+
+.course-body h2{
+  margin-top: 8px;
+}
+
+.instructor{
+  color: #aecb36;
+}
+
+
+
+/*******************************/
+/*     LARGE SCREENS ONLY     */
+/*****************************/
+
+
 @media screen and (min-width: 768px) {
 .course-item{
   height: 280px;
@@ -110,22 +140,9 @@ h1{
   width: 54%;
   background-color: rgba(255,255,255,0.7);
 }
-}
-
-.course-body h2{
-  margin-top: 8px;
-}
-
-.instructor{
-  color: #aecb36;
-}
 
 .play-button{
-  position: absolute;
   bottom: 8px;
   right: 8px;
-  width: 30px;
-  height: 30px;
-  background: url('../images/play_button.svg') no-repeat;
-  /* z-index: 10; */
+}
 }

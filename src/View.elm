@@ -15,10 +15,24 @@ view : Model -> Html Msg
 view model =
   div
     [ class "container" ]
+    [ renderPageHeader model
+    , renderPageMain model ]
+
+
+renderPageHeader : Model -> Html Msg
+renderPageHeader model =
+  div
+    [ class "header" ]
     [ renderPageHeading
     , renderPageSubheading
-    , renderFilter model
-    , renderCourses model ]
+    , renderFilter model ]
+
+
+renderPageMain : Model -> Html Msg
+renderPageMain model =
+  div
+    []
+    [ renderCourses model ]
 
 
 renderPageHeading : Html Msg
@@ -113,7 +127,7 @@ renderFilter {filterSetting} =
   let
       options =
         [ renderButton "Finished" Finished filterSetting
-        , renderButton "Current" Current filterSetting
+        , renderButton "Running" Current filterSetting
         , renderButton "Upcoming" Upcoming filterSetting ]
       classes = [ ("course-filters", True) ]
   in
