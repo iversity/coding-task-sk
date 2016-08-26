@@ -2,5 +2,6 @@
 .DS_Store
 
 # Elm dependencies and build target
-target
 elm-stuff
+tests/elm-stuff
+public/javascript/elm.js

@@ -1,1 +1,1 @@
-elm make --output target/elm.js src/**.elm
+elm make --output public/javascript/elm.js src/**.elm
