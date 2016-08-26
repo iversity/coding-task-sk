@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Html exposing (Html,div,h2)
-import Html.Attributes
+import Html.Attributes exposing (class,classList)
 import Html.Events
 
 import Model exposing (..)
@@ -12,7 +12,7 @@ import Msg exposing (..)
 view : Model -> Html Msg
 view model =
   div
-    []
+    [ class "container" ]
     [ renderFilter model
     , renderCourses model ]
 
@@ -27,7 +27,20 @@ renderCourses {courses,currentDate,filterSetting} =
 
 renderCourse : Course -> Html Msg
 renderCourse course =
-  h2 [] [ Html.text course.title ]
+  let
+      classes = [ ("course-item", True)
+                , ("gray-bg", True) ]
+  in
+      div
+        [ classList classes ]
+        [ renderCourseTitle course ]
+
+
+renderCourseTitle : Course -> Html Msg
+renderCourseTitle {title} =
+  h2
+    []
+    [ Html.text title ]
 
 
 renderFilter : Model -> Html Msg
@@ -37,9 +50,10 @@ renderFilter {filterSetting} =
         [ renderButton "Finished" Finished filterSetting
         , renderButton "Current" Current filterSetting
         , renderButton "Upcoming" Upcoming filterSetting ]
+      classes = [ ("course-filters", True) ]
   in
       Html.div
-        [ Html.Attributes.class "course-filters" ]
+        [ classList classes ]
         options
 
 
@@ -54,6 +68,6 @@ renderButton name targetSetting chosenSetting =
       Html.button
         [ Html.Attributes.type' "radio"
         , Html.Attributes.name "dateFilter"
-        , Html.Attributes.classList classes
+        , classList classes
         , Html.Events.onClick (SetFilter targetSetting) ]
         [ Html.text name ]

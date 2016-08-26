@@ -1,11 +1,34 @@
+@font-face {
+  font-family: 'Futura-Thin';
+  src:url('../fonts/Futura-Thin.ttf.woff') format('woff'),
+  url('../fonts/Futura-Thin.ttf.svg#Futura-Thin') format('svg'),
+  url('../fonts/Futura-Thin.ttf.eot'),
+  url('../fonts/Futura-Thin.ttf.eot?#iefix') format('embedded-opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body{
   font-family: sans-serif;
 }
 
+h1, h2, h3, h4, h5{
+  font-family: 'Futura-Thin', 'Futura', Lucida Grande, Helvetica, Arial, sans-serif;
+  color: "#222";
+  font-weight: normal;
+}
+
+.container{
+  max-width: 920px;
+  margin: 0 auto;
+}
 
 .course-filters{
+  margin-bottom: 30px;
+}
+
+.gray-bg{
   background-color: #f1f1f1;
-  padding: 15px;
 }
 
 .flatbutton{
@@ -16,7 +39,11 @@ body{
   text-decoration: none;
   outline: none;
   border: none;
-  background: #ddd;
+  background-image: -webkit-linear-gradient(top, #ebebeb, #f2f2f2);
+  background-image: -moz-linear-gradient(top, #ebebeb, #f2f2f2);
+  background-image: -ms-linear-gradient(top, #ebebeb, #f2f2f2);
+  background-image: -o-linear-gradient(top, #ebebeb, #f2f2f2);
+  background-image: linear-gradient(to bottom, #ebebeb, #f2f2f2);
 }
 
 .flatbutton.selected{
@@ -39,4 +66,9 @@ body{
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
   border: none;
+}
+
+.course-item{
+  padding: 15px;
+  margin-bottom: 30px;
 }
