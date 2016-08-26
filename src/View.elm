@@ -53,15 +53,14 @@ renderCourses : Model -> Html Msg
 renderCourses {courses,currentDate,filterSetting} =
   courses
   |> filterByDate filterSetting currentDate
-  |> List.map renderCourse
+  |> List.map renderCourseItem
   |> div []
 
 
-renderCourse : Course -> Html Msg
-renderCourse course =
+renderCourseItem : Course -> Html Msg
+renderCourseItem course =
   let
-      classes = [ ("course-item", True)
-                , ("gray-bg", True) ]
+      classes = [ ("course-item", True) ]
   in
       div
         [ classList classes ]
@@ -79,8 +78,7 @@ renderCourseImage {image} =
 renderCourseBody : Course -> Html Msg
 renderCourseBody course =
   let
-      classes = [ ("course-body", True)
-                , ("milk-bg", True) ]
+      classes = [ ("course-body", True) ]
   in
       div
         [ classList classes ]
@@ -126,9 +124,9 @@ renderFilter : Model -> Html Msg
 renderFilter {filterSetting} =
   let
       options =
-        [ renderButton "Finished" Finished filterSetting
-        , renderButton "Running" Current filterSetting
-        , renderButton "Upcoming" Upcoming filterSetting ]
+        [ renderFilterButton "Finished" Finished filterSetting
+        , renderFilterButton "Running" Current filterSetting
+        , renderFilterButton "Upcoming" Upcoming filterSetting ]
       classes = [ ("course-filters", True) ]
   in
       Html.div
@@ -136,11 +134,11 @@ renderFilter {filterSetting} =
         options
 
 
-renderButton : String -> FilterSetting -> FilterSetting -> Html Msg
-renderButton name targetSetting chosenSetting =
+renderFilterButton : String -> FilterSetting -> FilterSetting -> Html Msg
+renderFilterButton name targetSetting chosenSetting =
   let
       classes =
-            [ ("flatbutton", True)
+            [ ("filter-button", True)
             , ("selected", targetSetting==chosenSetting)
             ]
   in

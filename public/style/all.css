@@ -38,11 +38,7 @@ h1{
   margin-bottom: 100px;
 }
 
-.gray-bg{
-  background-color: #f1f1f1;
-}
-
-.flatbutton{
+.filter-button{
   font-family: Arial;
   color: #222;
   font-size: 16px;
@@ -57,7 +53,7 @@ h1{
   background-image: linear-gradient(to bottom, #ebebeb, #f2f2f2);
 }
 
-.flatbutton.selected{
+.filter-button.selected{
   color: #ffffff;
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -67,7 +63,7 @@ h1{
   background-image: linear-gradient(to bottom, #3498db, #2980b9);
 }
 
-.flatbutton:hover{
+.filter-button:hover{
   color: #ffffff;
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
@@ -80,8 +76,13 @@ h1{
 }
 
 .course-item{
-  margin-bottom: 100px;
   position: relative;
+  margin-bottom: 100px;
+  background-color: #f1f1f1;
+}
+
+.course-item img{
+  width: 100%;
 }
 
 .course-body{
@@ -89,8 +90,8 @@ h1{
   background-color: #f1f1f1;
 }
 
-.course-item img{
-  width: 100%;
+.course-body h2{
+  margin-top: 8px;
 }
 
 .play-button{
@@ -102,10 +103,6 @@ h1{
   background: url('../images/play_button.svg') no-repeat;
 }
 
-
-.course-body h2{
-  margin-top: 8px;
-}
 
 .instructor{
   color: #aecb36;
