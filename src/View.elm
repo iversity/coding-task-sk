@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html,div,p,h1,h2,h3)
+import Html exposing (Html,div,p,h1,h2,h3,img)
 import Html.Attributes exposing (class,classList)
 import Html.Events
 
@@ -40,6 +40,25 @@ renderCourse course =
   let
       classes = [ ("course-item", True)
                 , ("gray-bg", True) ]
+  in
+      div
+        [ classList classes ]
+        [ renderCourseImage course
+        , renderCourseBody course ]
+
+
+renderCourseImage : Course -> Html Msg
+renderCourseImage {image} =
+  img
+    [ Html.Attributes.src image ]
+    []
+
+
+renderCourseBody : Course -> Html Msg
+renderCourseBody course =
+  let
+      classes = [ ("course-body", True)
+                , ("half-gray-bg", True) ]
   in
       div
         [ classList classes ]

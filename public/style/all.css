@@ -10,6 +10,8 @@
 
 body{
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5{
@@ -28,11 +30,15 @@ h1{
 }
 
 .course-filters{
-  margin-bottom: 30px;
+  margin-bottom: 100px;
 }
 
 .gray-bg{
   background-color: #f1f1f1;
+}
+
+.half-gray-bg{
+  background-color: rgba(255,255,255,0.7);
 }
 
 .flatbutton{
@@ -73,11 +79,27 @@ h1{
 }
 
 .course-item{
-  padding: 15px;
-  margin-bottom: 30px;
+  margin-bottom: 100px;
+  position: relative;
+  height: 280px;
 }
 
-.course-item h2{
+.course-item img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.course-body{
+  padding: 15px;
+  position: absolute;
+  top: 10px;
+  left: 42%;
+  width: 54%;
+}
+
+.course-body h2{
   margin-top: 8px;
 }
 

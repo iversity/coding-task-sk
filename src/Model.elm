@@ -13,6 +13,7 @@ type alias Course =
   { title : String
   , subtitle : String
   , instructors : List Instructor
+  , image : String
   , startDate : Date
   , endDate : Date }
 
