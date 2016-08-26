@@ -66,7 +66,7 @@ renderCourseBody : Course -> Html Msg
 renderCourseBody course =
   let
       classes = [ ("course-body", True)
-                , ("half-gray-bg", True) ]
+                , ("milk-bg", True) ]
   in
       div
         [ classList classes ]

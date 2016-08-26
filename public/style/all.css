@@ -37,10 +37,6 @@ h1{
   background-color: #f1f1f1;
 }
 
-.half-gray-bg{
-  background-color: rgba(255,255,255,0.7);
-}
-
 .flatbutton{
   font-family: Arial;
   color: #222;
@@ -81,6 +77,19 @@ h1{
 .course-item{
   margin-bottom: 100px;
   position: relative;
+}
+
+.course-body{
+  padding: 10px 15px;
+  background-color: #f1f1f1;
+}
+
+.course-item img{
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+.course-item{
   height: 280px;
 }
 
@@ -89,14 +98,17 @@ h1{
   top: 0;
   left: 0;
   height: 100%;
+  max-width: 100%;
+  width: auto;
 }
 
 .course-body{
-  padding: 15px;
   position: absolute;
   top: 10px;
   left: 42%;
   width: 54%;
+  background-color: rgba(255,255,255,0.7);
+}
 }
 
 .course-body h2{
