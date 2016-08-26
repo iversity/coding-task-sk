@@ -4,6 +4,7 @@ import Http
 import Json.Decode exposing (Decoder,(:=),list,string,int,object3)
 import Json.Decode.Extra exposing (date)
 import Task exposing (..)
+import Date exposing (Date)
 
 import Model exposing (..)
 import Msg exposing (..)

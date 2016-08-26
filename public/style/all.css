@@ -1,3 +1,42 @@
 body{
   font-family: sans-serif;
 }
+
+
+.course-filters{
+  background-color: #f1f1f1;
+  padding: 15px;
+}
+
+.flatbutton{
+  font-family: Arial;
+  color: #222;
+  font-size: 16px;
+  padding: 8px 14px;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background: #ddd;
+}
+
+.flatbutton.selected{
+  color: #ffffff;
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+}
+
+.flatbutton:hover{
+  color: #ffffff;
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+  border: none;
+}

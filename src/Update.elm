@@ -1,11 +1,10 @@
 module Update exposing (..)
 
-import Task
 import Date
+import Task
 
 import Model exposing (..)
 import Msg exposing (..)
-import Load exposing (loadCourses)
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -13,16 +12,23 @@ update action model =
   case action of
     SetCourses courses ->
       ({ model | courses = courses }, Cmd.none)
+
     SelectCourse id ->
       ({ model | selectedCourseId = Just id }, Cmd.none)
-    LoadFailure error ->
-      (model, loadCourses) -- just keep trying forever
-    SetDateAndThenLoadCourses date ->
-      ({ model | currentDate = date }, loadCourses)
+
+    SetDate date ->
+      ({ model | currentDate = date }, Cmd.none)
+
+    SetFilter setting ->
+      ({ model | filterSetting = setting }, Cmd.none)
+
+    LoadFailure _ -> -- out of scope for now: handle HttpError
+      (model, Cmd.none)
+
     NoOp ->
       (model, Cmd.none)
 
 
-refreshCatalogue : Cmd Msg
-refreshCatalogue =
-  Date.now |> Task.perform (\_ -> NoOp) SetDateAndThenLoadCourses
+refreshCurrentDate : Cmd Msg
+refreshCurrentDate =
+  Date.now |> Task.perform (\date -> NoOp) SetDate

@@ -10,7 +10,8 @@ type Msg
   = SetCourses (List Course)
   | SelectCourse Int
   | LoadFailure Http.Error
-  | SetDateAndThenLoadCourses Date
+  | SetDate Date
+  | SetFilter FilterSetting
   | NoOp
 
 

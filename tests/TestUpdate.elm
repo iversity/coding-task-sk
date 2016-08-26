@@ -38,11 +38,11 @@ testSetFilter : Expectation
 testSetFilter =
   let
       courses = stubCourses
-      output = initialModel |> update (SetCourses stubCourses)
+      output = initialModel |> update (SetFilter Finished)
       (model', _) = output
   in
-      model'.courses
-        |> Expect.equal stubCourses
+      model'.filterSetting
+      |> Expect.equal Finished
 
 
 testSetCourses : Expectation
@@ -53,7 +53,7 @@ testSetCourses =
       (model', _) = output
   in
       model'.courses
-        |> Expect.equal stubCourses
+      |> Expect.equal stubCourses
 
 
 testSelectCourse : Expectation
