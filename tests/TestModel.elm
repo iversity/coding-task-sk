@@ -20,9 +20,9 @@ testModel =
       \() ->
         initialModel.courses |> Expect.equal []
     , describe "orderByDate" testOrderByDate
-    , describe "upcomingCourses" testUpcomingCourses
-    , describe "finishedCourses" testFinishedCourses
-    , describe "currentCourses" testCurrentCourses
+    , describe "filterByDate Upcoming" testUpcomingCourses
+    , describe "filterByDate Finished" testFinishedCourses
+    , describe "filterByDate Current" testCurrentCourses
     ]
 
 
@@ -31,32 +31,32 @@ testUpcomingCourses =
   [ test "empty list" <|
     \() ->
       []
-      |> upcomingCourses (Date.fromTime 0)
+      |> filterByDate Upcoming (Date.fromTime 0)
       |> Expect.equal []
   , test "0 of 1" <|
     \() ->
       [ stub1 ]
-      |> upcomingCourses (Date.fromTime 1)
+      |> filterByDate Upcoming (Date.fromTime 1)
       |> Expect.equal []
   , test "1 of 1" <|
     \() ->
       [ stub1 ]
-      |> upcomingCourses (Date.fromTime 0)
+      |> filterByDate Upcoming (Date.fromTime 0)
       |> Expect.equal [ stub1 ]
   , test "0 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> upcomingCourses (Date.fromTime 2)
+      |> filterByDate Upcoming (Date.fromTime 2)
       |> Expect.equal []
   , test "1 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> upcomingCourses (Date.fromTime 1)
+      |> filterByDate Upcoming (Date.fromTime 1)
       |> Expect.equal [ stub2 ]
   , test "2 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> upcomingCourses (Date.fromTime 0)
+      |> filterByDate Upcoming (Date.fromTime 0)
       |> Expect.equal [ stub1, stub2 ]
   ]
 
@@ -66,32 +66,32 @@ testFinishedCourses =
   [ test "empty list" <|
     \() ->
       []
-      |> finishedCourses (Date.fromTime 0)
+      |> filterByDate Finished (Date.fromTime 0)
       |> Expect.equal []
   , test "0 of 1" <|
     \() ->
       [ stub1 ]
-      |> finishedCourses (Date.fromTime 0)
+      |> filterByDate Finished (Date.fromTime 0)
       |> Expect.equal []
   , test "1 of 1" <|
     \() ->
       [ stub1 ]
-      |> finishedCourses (Date.fromTime 3)
+      |> filterByDate Finished (Date.fromTime 3)
       |> Expect.equal [ stub1 ]
   , test "0 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> finishedCourses (Date.fromTime 2)
+      |> filterByDate Finished (Date.fromTime 2)
       |> Expect.equal []
   , test "1 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> finishedCourses (Date.fromTime 3)
+      |> filterByDate Finished (Date.fromTime 3)
       |> Expect.equal [ stub1 ]
   , test "2 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> finishedCourses (Date.fromTime 4)
+      |> filterByDate Finished (Date.fromTime 4)
       |> Expect.equal [ stub1, stub2 ]
   ]
 
@@ -101,32 +101,32 @@ testCurrentCourses =
   [ test "empty list" <|
     \() ->
       []
-      |> currentCourses (Date.fromTime 0)
+      |> filterByDate Current (Date.fromTime 0)
       |> Expect.equal []
   , test "0 of 1" <|
     \() ->
       [ stub1 ]
-      |> currentCourses (Date.fromTime 0)
+      |> filterByDate Current (Date.fromTime 0)
       |> Expect.equal []
   , test "1 of 1" <|
     \() ->
       [ stub1 ]
-      |> currentCourses (Date.fromTime 1)
+      |> filterByDate Current (Date.fromTime 1)
       |> Expect.equal [ stub1 ]
   , test "0 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> currentCourses (Date.fromTime 4)
+      |> filterByDate Current (Date.fromTime 4)
       |> Expect.equal []
   , test "1 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> currentCourses (Date.fromTime 3)
+      |> filterByDate Current (Date.fromTime 3)
       |> Expect.equal [ stub2 ]
   , test "2 of 2" <|
     \() ->
       [ stub1, stub2 ]
-      |> currentCourses (Date.fromTime 2)
+      |> filterByDate Current (Date.fromTime 2)
       |> Expect.equal [ stub1, stub2 ]
   ]
 

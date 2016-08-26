@@ -19,16 +19,10 @@ view model =
 
 renderCourses : Model -> Html Msg
 renderCourses {courses,currentDate,filterSetting} =
-  let
-      filterFn = case filterSetting of
-        Current -> currentCourses
-        Finished -> finishedCourses
-        Upcoming -> upcomingCourses
-  in
-      courses
-      |> filterFn currentDate
-      |> List.map renderCourse
-      |> div []
+  courses
+  |> filterByDate filterSetting currentDate
+  |> List.map renderCourse
+  |> div []
 
 
 renderCourse : Course -> Html Msg

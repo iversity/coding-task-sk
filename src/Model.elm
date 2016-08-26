@@ -34,26 +34,22 @@ orderByDate courses =
   |> List.sortBy (\course -> course.startDate |> Date.toTime)
 
 
-upcomingCourses : Date -> List Course -> List Course
-upcomingCourses currentDate courses =
-  courses
-  |> List.filter
-       (\course ->
-         Date.toTime course.startDate > Date.toTime currentDate)
+filterByDate : FilterSetting -> Date -> List Course -> List Course
+filterByDate setting currentDate courses =
+  let
+      fn = case setting of
+        Upcoming ->
+          (\course ->
+            Date.toTime course.startDate > Date.toTime currentDate)
 
+        Finished ->
+          (\course ->
+            Date.toTime course.endDate < Date.toTime currentDate)
 
-finishedCourses : Date -> List Course -> List Course
-finishedCourses currentDate courses =
-  courses
-  |> List.filter
-       (\course ->
-         Date.toTime course.endDate < Date.toTime currentDate)
-
-
-currentCourses : Date -> List Course -> List Course
-currentCourses currentDate courses =
-  courses
-  |> List.filter
-       (\course ->
-         (Date.toTime course.startDate <= Date.toTime currentDate) &&
-         (Date.toTime course.endDate >= Date.toTime currentDate))
+        Current ->
+          (\course ->
+            (Date.toTime course.startDate <= Date.toTime currentDate) &&
+            (Date.toTime course.endDate >= Date.toTime currentDate))
+  in
+      courses
+      |> List.filter fn
