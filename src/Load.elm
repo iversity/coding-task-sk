@@ -1,7 +1,7 @@
 module Load exposing (loadCourses)
 
 import Http
-import Json.Decode exposing (Decoder,(:=),list,string,int,object3)
+import Json.Decode exposing (Decoder,(:=),list,string,int,object4)
 import Json.Decode.Extra exposing (date)
 import Task exposing (..)
 import Date exposing (Date)
@@ -29,8 +29,9 @@ courses =
 
 course : Decoder Course
 course =
-  object3
+  object4
     Course
     ("title" := string)
+    ("subtitle" := string)
     ("start_date" := date)
     ("end_date" := date)

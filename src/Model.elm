@@ -11,6 +11,7 @@ type alias Model =
 
 type alias Course =
   { title : String
+  , subtitle : String
   , startDate : Date
   , endDate : Date }
 

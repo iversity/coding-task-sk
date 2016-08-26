@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html,div,h2)
+import Html exposing (Html,div,h2,h3)
 import Html.Attributes exposing (class,classList)
 import Html.Events
 
@@ -33,7 +33,8 @@ renderCourse course =
   in
       div
         [ classList classes ]
-        [ renderCourseTitle course ]
+        [ renderCourseTitle course
+        , renderCourseSubtitle course ]
 
 
 renderCourseTitle : Course -> Html Msg
@@ -41,6 +42,13 @@ renderCourseTitle {title} =
   h2
     []
     [ Html.text title ]
+
+
+renderCourseSubtitle : Course -> Html Msg
+renderCourseSubtitle {subtitle} =
+  h3
+    []
+    [ Html.text subtitle ]
 
 
 renderFilter : Model -> Html Msg
