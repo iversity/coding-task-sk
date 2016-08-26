@@ -65,6 +65,7 @@ renderCourseItem course =
       div
         [ classList classes ]
         [ renderCourseImage course
+        , renderCourseTint
         , renderCourseBody course ]
 
 
@@ -72,6 +73,13 @@ renderCourseImage : Course -> Html Msg
 renderCourseImage {image} =
   img
     [ Html.Attributes.src image ]
+    []
+
+
+renderCourseTint : Html Msg
+renderCourseTint =
+  div
+    [ class "course-tint" ]
     []
 
 
