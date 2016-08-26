@@ -36,10 +36,14 @@ clone the repository
 
 `sh run-tests.sh`
 
-### Build target/elm.js
+### Compile Elm to JavaScript
 
 `sh build.sh`
 
+### Start the server
+
+`node_modules/http-server/bin/http-server public`
+
 ### See the result
 
-open index.html in a browser
+localhost:8080
