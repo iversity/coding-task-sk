@@ -181,6 +181,7 @@ img.course-details-background{
 
 .course-details-panel.active-panel img.course-details-background{
   -webkit-filter: blur(15px);
+  -filter: blur(15px);
   top: -1%;
   left: -1%;
   min-height: 102%;
@@ -200,9 +201,9 @@ img.course-details-background{
   background-color: #f1f1f1;
 }
 
-.back-button{
+.center-button-wrapper{
   text-align: center;
-  height: 2em;
+  margin: 2em 0;
 }
 
 /*******************************/

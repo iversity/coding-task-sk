@@ -48,24 +48,6 @@ renderBackground imageUrl =
     []
 
 
-renderCourseTitle : Course -> Html Msg
-renderCourseTitle {title} =
-  h1
-    []
-    [ Html.text title ]
-
-
-renderBackButton : Html Msg
-renderBackButton =
-  div
-    [ class "back-button" ]
-    [ button
-      [ Html.Events.onClick NavigateToCatalogue
-      , class "filter-button" ]
-      [ Html.text "Back" ]
-    ]
-
-
 renderContainer : Course -> Html Msg
 renderContainer course =
   let
@@ -76,7 +58,9 @@ renderContainer course =
       div
         [ classList classes ]
         [ renderHeader course
+        , renderEnrolButton
         , renderInstructors course
+        , renderEnrolButton
         , renderBackButton ]
 
 
@@ -86,6 +70,13 @@ renderHeader course =
     [ class "course-details-section" ]
     [ renderCourseTitle course
     , renderCourseSubtitle course ]
+
+
+renderCourseTitle : Course -> Html Msg
+renderCourseTitle {title} =
+  h1
+    []
+    [ Html.text title ]
 
 
 renderInstructors : Course -> Html Msg
@@ -134,3 +125,26 @@ renderInstructor instructor =
         children
 
 
+renderEnrolButton : Html Msg
+renderEnrolButton =
+  let
+      classes =
+        [ ("filter-button", True)
+        , ("selected", True) ]
+      theButton =
+        button
+          [ classList classes ]
+          [ Html.text "Sign up FREE" ]
+  in
+      div [ class "center-button-wrapper" ] [ theButton ]
+
+
+renderBackButton : Html Msg
+renderBackButton =
+  div
+    [ class "center-button-wrapper" ]
+    [ button
+      [ Html.Events.onClick NavigateToCatalogue
+      , class "filter-button" ]
+      [ Html.text "Back" ]
+    ]
