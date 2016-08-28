@@ -16,18 +16,16 @@ import Model exposing (..)
 testModel : Test
 testModel =
   describe "Model"
-    [ test "starts with an empty list of courses" <|
-      \() ->
-        initialModel.courses |> Expect.equal []
-    , describe "orderByDate" testOrderByDate
-    , describe "filterByDate Upcoming" testUpcomingCourses
-    , describe "filterByDate Finished" testFinishedCourses
-    , describe "filterByDate Current" testCurrentCourses
+    [ describe "initialModel" describeDefaultValues
+    , describe "orderByDate" describeOrderByDate
+    , describe "filterByDate Upcoming" describeUpcomingCourses
+    , describe "filterByDate Finished" describeFinishedCourses
+    , describe "filterByDate Current" describeCurrentCourses
     ]
 
 
-testUpcomingCourses : List Test
-testUpcomingCourses =
+describeUpcomingCourses : List Test
+describeUpcomingCourses =
   [ test "empty list" <|
     \() ->
       []
@@ -61,8 +59,8 @@ testUpcomingCourses =
   ]
 
 
-testFinishedCourses : List Test
-testFinishedCourses =
+describeFinishedCourses : List Test
+describeFinishedCourses =
   [ test "empty list" <|
     \() ->
       []
@@ -96,8 +94,8 @@ testFinishedCourses =
   ]
 
 
-testCurrentCourses : List Test
-testCurrentCourses =
+describeCurrentCourses : List Test
+describeCurrentCourses =
   [ test "empty list" <|
     \() ->
       []
@@ -131,8 +129,8 @@ testCurrentCourses =
   ]
 
 
-testOrderByDate : List Test
-testOrderByDate =
+describeOrderByDate : List Test
+describeOrderByDate =
   [ test "empty list" <|
     \() ->
       []
@@ -163,4 +161,24 @@ testOrderByDate =
       [ stub3, stub1, stub2 ]
       |> orderByDate
       |> Expect.equal [ stub1, stub2, stub3 ]
+  ]
+
+
+describeDefaultValues : List Test
+describeDefaultValues =
+  [ test "no courses loaded" <|
+    \() ->
+      initialModel.courses |> Expect.equal []
+
+  , test "filter courses to show current ones only" <|
+    \() ->
+      initialModel.filterSetting |> Expect.equal Current
+
+  , test "no course selected" <|
+    \() ->
+      initialModel.selectedCourse |> Expect.equal Nothing
+
+  , test "course details are hidden" <|
+    \() ->
+      initialModel.expandSelectedCourse |> Expect.equal False
   ]

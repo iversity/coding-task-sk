@@ -16,9 +16,8 @@ testUpdate : Test
 testUpdate =
   describe "update"
     [ test "setCourses" <| \() -> testSetCourses
-    , test "selectCourse" <| \() -> testSelectCourse
-    , test "filterSetting defaults to current" <| \() -> testFilterSetting
     , test "setFilter" <| \() -> testSetFilter
+    , describe "selecting a course" describeSelectCourse
     ]
 
 
@@ -28,18 +27,11 @@ stubCourses =
   , stubCourse 2 ]
 
 
-testFilterSetting : Expectation
-testFilterSetting =
-  initialModel.filterSetting
-  |> Expect.equal Current
-
-
 testSetFilter : Expectation
 testSetFilter =
   let
-      courses = stubCourses
-      output = initialModel |> update (SetFilter Finished)
-      (model', _) = output
+      (model', _) =
+        initialModel |> update (SetFilter Finished)
   in
       model'.filterSetting
       |> Expect.equal Finished
@@ -49,19 +41,50 @@ testSetCourses : Expectation
 testSetCourses =
   let
       courses = stubCourses
-      output = initialModel |> update (SetCourses stubCourses)
-      (model', _) = output
+      (model', _) =
+        initialModel |> update (SetCourses stubCourses)
   in
       model'.courses
       |> Expect.equal stubCourses
 
 
-testSelectCourse : Expectation
-testSelectCourse =
+describeSelectCourse : List Test
+describeSelectCourse =
+  [ test "SelectCourse sets a course" <| \() -> testSelectCourseSetsCourse
+  , test "SelectCourse expands course details" <| \() -> testSelectCourseExpandsDetails
+  , test "NavigateToCatalogue collapses course details" <| \() -> testNavigateToCatalogueCollapsesDetails
+  ]
+
+
+testSelectCourseSetsCourse : Expectation
+testSelectCourseSetsCourse =
   let
-      id = 12345
-      output = { initialModel | courses = stubCourses } |> update (SelectCourse id)
+      stub = stubCourse 1
+      output = { initialModel | courses = stubCourses } |> update (SelectCourse stub)
       (model', _) = output
   in
-      model'.selectedCourseId
-        |> Expect.equal (Just id)
+      model'.selectedCourse
+      |> Expect.equal (Just stub)
+
+
+testSelectCourseExpandsDetails : Expectation
+testSelectCourseExpandsDetails =
+  let
+      stub = stubCourse 1
+      output = initialModel |> update (SelectCourse stub)
+      (model', _) = output
+  in
+      model'.expandSelectedCourse
+      |> Expect.equal True
+
+
+testNavigateToCatalogueCollapsesDetails : Expectation
+testNavigateToCatalogueCollapsesDetails =
+  let
+      output =
+        { initialModel | expandSelectedCourse }
+        |> update (NavigateToCatalogue stub)
+      (model', _) = output
+  in
+      model'.expandSelectedCourse
+      |> Expect.equal True

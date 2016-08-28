@@ -13,8 +13,12 @@ update action model =
     SetCourses courses ->
       ({ model | courses = courses }, Cmd.none)
 
-    SelectCourse id ->
-      ({ model | selectedCourseId = Just id }, Cmd.none)
+    SelectCourse course ->
+      ({ model | selectedCourse = Just course
+               , expandSelectedCourse = True }, Cmd.none)
+
+    NavigateToCatalogue ->
+      ({ model | expandSelectedCourse = False }, Cmd.none)
 
     SetDate date ->
       ({ model | currentDate = date }, Cmd.none)

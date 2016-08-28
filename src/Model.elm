@@ -6,8 +6,10 @@ import Date exposing (Date)
 type alias Model =
   { courses : List Course
   , currentDate : Date
-  , selectedCourseId : Maybe Int
-  , filterSetting : FilterSetting }
+  , filterSetting : FilterSetting
+  , selectedCourse : Maybe Course
+  , expandSelectedCourse : Bool }
+
 
 type alias Course =
   { title : String
@@ -17,8 +19,12 @@ type alias Course =
   , startDate : Date
   , endDate : Date }
 
+
 type alias Instructor =
-  { name : String }
+  { name : String
+  , biography : String
+  , image : Maybe String }
+
 
 type FilterSetting
   = Current
@@ -30,8 +36,9 @@ initialModel : Model
 initialModel =
   { courses = []
   , currentDate = Date.fromTime 0
-  , selectedCourseId = Nothing
-  , filterSetting = Current }
+  , filterSetting = Current
+  , selectedCourse = Nothing
+  , expandSelectedCourse = False }
 
 
 orderByDate : List Course -> List Course

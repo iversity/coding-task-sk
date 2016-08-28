@@ -24,14 +24,45 @@ h1{
   font-size: 60px;
 }
 
-.header{
-  margin-top: 100px;
-  text-align: center;
+p{
+  font-weight: lighter;
 }
 
 .container{
   max-width: 920px;
   margin: 0 auto;
+}
+
+.fullscreen-panel-wrapper{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: left 1s;
+  -moz-transition: left 1s;
+  -o-transition: left 1s;
+  transition: left 1s;
+}
+
+.fullscreen-panel-content{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.course-catalogue-panel{
+  left: -100%;
+}
+
+.course-catalogue-panel.active-panel{
+  left: 0%;
+}
+
+.course-catalogue-header{
+  margin-top: 100px;
+  text-align: center;
 }
 
 .course-filters{
@@ -119,6 +150,9 @@ h1{
 
 .course-item:hover .play-button{
   right: 0;
+  -webkit-transition: right .3s;
+  -moz-transition: right .3s;
+  -o-transition: right .3s;
   transition: right .3s;
 }
 
@@ -126,7 +160,67 @@ h1{
   color: #aecb36;
 }
 
+.course-details-panel{
+  left: 100%;
+}
 
+.course-details-panel.active-panel{
+  left: 0%;
+}
+
+.course-details-container{
+  padding: 10px 15px;
+  background-color: rgba(255,255,255,0.7);
+}
+
+img.course-details-background{
+  -webkit-filter: blur(0);
+  filter: blur(0);
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+  z-index: -1;
+  transition: all 1.1s;
+  transition-delay: 0s;
+}
+
+.course-details-panel .fullscreen-panel-content{
+  opacity: 0;
+}
+
+.course-details-panel.active-panel .fullscreen-panel-content{
+  opacity: 1;
+  transition: opacity 2s;
+  transition-delay: 2s;
+}
+
+.course-details-panel.active-panel img.course-details-background{
+  -webkit-filter: blur(15px);
+  top: -1%;
+  left: -1%;
+  min-height: 102%;
+  min-width: 102%;
+  transition: all 1.5s;
+  transition-delay: 2s;
+}
+
+.course-details-instructor img{
+  width: 300px;
+  max-width: 90%;
+}
+
+.course-details-section{
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  background-color: #f1f1f1;
+}
+
+.back-button{
+  text-align: center;
+  height: 2em;
+}
 
 /*******************************/
 /*     LARGE SCREENS ONLY     */

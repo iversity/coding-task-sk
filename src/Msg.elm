@@ -8,7 +8,8 @@ import Model exposing (..)
 
 type Msg
   = SetCourses (List Course)
-  | SelectCourse Int
+  | SelectCourse Course
+  | NavigateToCatalogue
   | LoadFailure Http.Error
   | SetDate Date
   | SetFilter FilterSetting
