@@ -106,15 +106,7 @@ renderCourseBody course =
         [ classList classes ]
         [ renderCourseTitle course
         , renderCourseInstructors course
-        , renderCourseSubtitle course
-        , renderPlayButton ]
-
-
-renderPlayButton : Html Msg
-renderPlayButton =
-  div
-    [ Html.Attributes.class "play-button" ]
-    []
+        , renderCourseSubtitle course ]
 
 
 renderCourseInstructors : Course -> Html Msg

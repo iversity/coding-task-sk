@@ -82,9 +82,9 @@ testNavigateToCatalogueCollapsesDetails : Expectation
 testNavigateToCatalogueCollapsesDetails =
   let
       output =
-        { initialModel | expandSelectedCourse }
-        |> update (NavigateToCatalogue stub)
+        { initialModel | expandSelectedCourse = True }
+        |> update NavigateToCatalogue
       (model', _) = output
   in
       model'.expandSelectedCourse
-      |> Expect.equal True
+      |> Expect.equal False

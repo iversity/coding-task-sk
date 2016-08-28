@@ -139,23 +139,6 @@ p{
   margin-top: 8px;
 }
 
-.play-button{
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 30px;
-  height: 30px;
-  background: url('../images/play_button.svg') no-repeat;
-}
-
-.course-item:hover .play-button{
-  right: 0;
-  -webkit-transition: right .3s;
-  -moz-transition: right .3s;
-  -o-transition: right .3s;
-  transition: right .3s;
-}
-
 .instructor{
   color: #aecb36;
 }
@@ -248,10 +231,5 @@ img.course-details-background{
   min-height: 242px;
   width: 54%;
   background-color: rgba(255,255,255,0.7);
-}
-
-.play-button{
-  bottom: 8px;
-  right: 8px;
 }
 }
