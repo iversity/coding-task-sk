@@ -59,6 +59,7 @@ renderListOfCourses : Model -> Html Msg
 renderListOfCourses {courses,currentDate,filterSetting} =
   courses
   |> filterByDate filterSetting currentDate
+  |> orderByDate
   |> List.map renderCourseItem
   |> div []
 
@@ -106,7 +107,8 @@ renderCourseBody course =
         [ classList classes ]
         [ renderCourseTitle course
         , renderCourseInstructors course
-        , renderCourseSubtitle course ]
+        , renderCourseSubtitle course
+        , renderCourseStartDate course ]
 
 
 renderCourseInstructors : Course -> Html Msg
