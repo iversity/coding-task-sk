@@ -2,6 +2,7 @@ module Msg exposing (..)
 
 import Http exposing (..)
 import Date exposing (Date)
+import Dom
 
 import Model exposing (..)
 
@@ -13,6 +14,8 @@ type Msg
   | LoadFailure Http.Error
   | SetDate Date
   | SetFilter FilterSetting
+  | DomNodeNotFound Dom.Error
+  | DomScroll ()
   | NoOp
 
 

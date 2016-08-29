@@ -1,7 +1,7 @@
 module View.CourseDetailsPanel exposing (view)
 
 import Html exposing (Html,div,p,h1,h2,h3,img,button)
-import Html.Attributes exposing (class,classList,src,property)
+import Html.Attributes exposing (id,class,classList,src,property)
 import Html.Events
 
 import Json.Encode
@@ -36,7 +36,8 @@ view selectedCourse active =
 renderContent : Html Msg -> Html Msg
 renderContent content =
   div
-    [ class "fullscreen-panel-content" ]
+    [ class "fullscreen-panel-content"
+    , id "details-panel-content" ]
     [ content ]
 
 
