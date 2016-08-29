@@ -2,9 +2,11 @@ module Update exposing (..)
 
 import Date
 import Task
+import Navigation
 
 import Model exposing (..)
 import Msg exposing (..)
+import Load exposing (loadCourses)
 
 
 update : Msg -> Model -> (Model, Cmd Msg)
@@ -15,7 +17,7 @@ update action model =
 
     SelectCourse course ->
       ({ model | selectedCourse = Just course
-               , expandSelectedCourse = True }, Cmd.none)
+               , expandSelectedCourse = True }, Navigation.newUrl "/details")
 
     NavigateToCatalogue ->
       ({ model | expandSelectedCourse = False }, Cmd.none)
@@ -31,6 +33,17 @@ update action model =
 
     NoOp ->
       (model, Cmd.none)
+
+
+urlUpdate : Page -> Model -> (Model, Cmd Msg)
+urlUpdate page model =
+  case page of
+    Home ->
+          ({ model | expandSelectedCourse = False }
+          , Cmd.batch [ refreshCurrentDate , loadCourses ])
+
+    Details ->
+      ({ model | expandSelectedCourse = True }, Cmd.none)
 
 
 refreshCurrentDate : Cmd Msg

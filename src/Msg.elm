@@ -16,6 +16,11 @@ type Msg
   | NoOp
 
 
+type Page
+  = Home
+  | Details
+
+
 subscriptions : Model -> Sub Msg
 subscriptions model =
   [] |> Sub.batch
